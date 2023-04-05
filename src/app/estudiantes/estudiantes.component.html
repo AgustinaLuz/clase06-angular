@@ -1,0 +1,128 @@
+<main class="container-fluid">
+  <section class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Candidate Info</h5>
+
+      <form [formGroup]="estudianteForm" (ngSubmit)="onSubmit()" class="col">
+        <div class="col">
+          <div class="col">
+            <input
+              formControlName="nombre"
+              type="text"
+              [class.is-invalid]="
+                nombreControl.invalid && nombreControl.touched
+              "
+              class="form-control"
+              placeholder="First name"
+              aria-label="First name"
+            />
+            <app-form-error-helper
+              *ngIf="nombreControl.invalid && nombreControl.touched"
+              [formErrors]="nombreControl.errors"
+            >
+            </app-form-error-helper>
+            <!-- <div *ngIf="nombreControl.hasError('required')" class="invalid-feedback">
+                name required
+              </div>
+              <div *ngIf="nombreControl.hasError('minlength')" class="invalid-feedback">
+                large min required
+              </div> -->
+          </div>
+
+          <div class="col">
+            <input
+              formControlName="apellido"
+              type="text"
+              [class.is-invalid]="
+                apellidoControl.invalid && apellidoControl.touched
+              "
+              class="form-control"
+              placeholder="Last name"
+              aria-label="Last name"
+            />
+            <app-form-error-helper
+              *ngIf="apellidoControl.invalid && apellidoControl.touched"
+              [formErrors]="apellidoControl.errors"
+            >
+            </app-form-error-helper>
+          </div>
+          <div class="col-12">
+            <input
+              [formControl]="emailControl"
+              type="email"
+              [class.is-invalid]="emailControl.invalid && emailControl.touched"
+              class="form-control"
+              placeholder="Email"
+              aria-label="Email"
+            />
+            <app-form-error-helper
+              *ngIf="emailControl.invalid && emailControl.touched"
+              [formErrors]="emailControl.errors"
+            >
+            </app-form-error-helper>
+          </div>
+          <div class="col">
+            <label>Phone number</label>
+            <input
+              formControlName="phone"
+              type="text"
+              [class.is-invalid]="
+                phoneControl.invalid && phoneControl.touched
+              "
+              class="form-control"
+              placeholder="+11 0000 0000"
+              aria-label="Phone"
+            />
+            <app-form-error-helper
+              *ngIf="phoneControl.invalid && phoneControl.touched"
+              [formErrors]="phoneControl.errors"
+            >
+            </app-form-error-helper>
+          </div> 
+          <div class="mb-3">
+            <p for="exampleFormControlTextarea1" class="form-label">Additional Info</p>
+            <textarea 
+            [formControl]="messageControl"
+              type="text"
+              [class.is-invalid]="messageControl.invalid && messageControl.touched"
+              class="form-control" 
+              id="exampleFormControlTextarea1" 
+              rows="3"
+              placeholder="About you"
+              aria-label="Message">
+            </textarea>
+            <app-form-error-helper
+            *ngIf="messageControl.invalid && messageControl.touched"
+            [formErrors]="messageControl.errors"
+          >
+          </app-form-error-helper>
+          </div>
+          <label for="job">Interests:</label>
+            <select id="job" name="field4">
+            <optgroup label="Indoors">
+              <option value="fishkeeping">Fishkeeping</option>
+              <option value="reading">Reading</option>
+              <option value="boxing">Boxing</option>
+              <option value="debate">Debate</option>
+              <option value="gaming">Gaming</option>
+              <option value="snooker">Snooker</option>
+              <option value="other_indoor">Other</option>
+            </optgroup>
+            <optgroup label="Outdoors">
+              <option value="football">Football</option>
+              <option value="swimming">Swimming</option>
+              <option value="fishing">Fishing</option>
+              <option value="climbing">Climbing</option>
+              <option value="cycling">Cycling</option>
+              <option value="other_outdoor">Other</option>
+            </optgroup>
+            </select>    
+            <div class="submit-btn">
+              <button class="btn btn-primary" type="submit">Apply</button>
+            </div>
+        </div>
+        
+      </form>
+    </div>
+  </section>
+</main>
